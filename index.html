@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // no.1
+      // Yudi ingin menarik uang sebanyak X rupiah dari ATM. Mesin ATM hanya akan menerima transaksi jika X kelipatan 5
+      // dan saldo rekening Yudi memiliki cukup uang untuk melakukan transaksi penarikan (termasuk biaya bank). Untuk
+      // setiap penarikan yang berhasil, bank mengenakan biaya 0,5 rupiah.
+      // Diberikan X adalah uang yang ingin yudi tarik dan Y adalah jumlah uang dalam rekening Yudi. Ayo hitung saldo
+      // akun Yudi setelah melakukan transaksi!
+
+      function tarikATM(x, y) {
+        if (x % 5 == 0) {
+          let hasil = y - 0.5;
+          return hasil;
+        } else {
+          let hasil = y;
+          return hasil;
+        }
+      }
+      console.log(tarikATM(30, 20));
+      console.log(tarikATM(42, 100));
+
+      // no.2
+      // Nilai ujian mahasiswa dikategorikan sebagai berikut :
+      // ● - A : 91 - 100
+      // ● - B : 81 - 90
+      // ● - C : 71 - 80
+      // ● - D : 61 - 70
+      // ● - E : <= 60\
+      // Diberikan sebuah nilai ujian, tentukan kategori dari nilai tersebut
+
+      function kategoriNilai(n) {
+        if (n >= 91 && n <= 100) {
+          console.log("A");
+        } else if (n >= 81 && n <= 90) {
+          console.log("B");
+        } else if (n >= 71 && n <= 80) {
+          console.log("C");
+        } else if (n >= 61 && n <= 70) {
+          console.log("D");
+        } else if (n <= 60) {
+          console.log("E");
+        }
+      }
+      console.log(kategoriNilai(95));
+
+      console.log(kategoriNilai(76));
+
+      // no.3 versi 1
+      // Diberikan sebuah string alamat IP yang valid. Untuk setiap tanda . pada alamat IP gantilah menjadi tanda ()
+
+      function gantiSimbol(kalimat) {
+        let awal = ".";
+        let ganti = "()";
+
+        let result = kalimat;
+        while (result.indexOf(awal) > -1) {
+          result = result.replace(awal, ganti);
+        }
+        return result;
+      }
+      console.log(gantiSimbol("1.1.1.1"));
+      console.log(gantiSimbol("192.168.1.1"));
+
+      // no.3 versi 2
+      function gantiSimbol(ip) {
+        let ganti = "";
+        for (let i = 0; i < ip.length; i++) {
+          if (ip[i] === ".") {
+            ganti += "()";
+          } else {
+            ganti += ip[i];
+          }
+        }
+        return ganti;
+      }
+      console.log(gantiSimbol("1.1.1.1"));
+      console.log(gantiSimbol("192.168.1.1"));
+
+      // no.4
+      function jumlahkanDigit(n) {
+        let sum = 0;
+        while (n > 0) {
+          sum += n % 10;
+          n = Math.floor(n / 10);
+        }
+        return sum;
+      }
+      console.log(jumlahkanDigit(123));
+
+      // no.5
+      function checkDistance(s) {
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "a") {
+            for (let j = i + 1; j < s.length; j++) {
+              if (s[j] === "b" && j - i > 3) {
+                return "YES";
+              }
+            }
+          } else if (s[i] === "b") {
+            for (let j = i + 1; j < s.length; j++) {
+              if (s[j] === "a" && j - i > 3) {
+                return "YES";
+              }
+            }
+          }
+        }
+        return "NO";
+      }
+
+      console.log(checkDistance("cdaecba"));
+      console.log(checkDistance("acdebae"));
+    </script>
+  </body>
+</html>
